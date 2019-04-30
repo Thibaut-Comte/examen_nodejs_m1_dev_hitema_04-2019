@@ -5,7 +5,9 @@ module.exports.decodeHexFileContent = (filePath) =>  {
 
         var content = fs.readFileSync(filePath, 'utf8');
         content = Buffer.from(content, 'hex').toString('utf8');
-        if(content)
-            resolve(content)
+        if(content)  resolve(content);
+        else reject();
+           
+            
     });
 }
