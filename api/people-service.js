@@ -27,21 +27,21 @@ module.exports = class PeopleService {
     getPeople(filters) {
         let result;
 
-        const keys = Object.keys(filters);
-
-        if (Object.keys(filters).length > 0) {
-
+        if(Object.keys(filters).length){
+            const keys = Object.keys(filters);
+            
+            console.log(keys);
             result = this.peoples.filter(element => {
                 for (let i = 0; i < keys.length; i++) {
-                    if (element[keys[i]] === filters[keys[i]]) {
+                    if(element[keys[i]] === filters[keys[i]]){
                         return element;
                     }
                 }
-                return element;
             });
         } else {
-            result = this.peoples
+            result = this.peoples;
         }
         return result;
     }
+
 }
