@@ -6,10 +6,42 @@ module.exports = class PeopleService {
     }
 
     updatePeople(id, people) {
-        // To be implemented!
+
+        if (people) {
+            let peopleUpdate = this.peoples.find(element => {
+                return parseInt(element.id) === parseInt(id);
+            });
+
+            if (peopleUpdate) {
+                peopleUpdate = {
+                    ...peopleUpdate,
+                    ...people
+                };
+                return peopleUpdate;
+            }
+
+        }
+        return null;
     }
-    
+
     getPeople(filters) {
-        // To be implemented!
+        let result;
+
+        const keys = Object.keys(filters);
+
+        if (Object.keys(filters).length > 0) {
+
+            result = this.peoples.filter(element => {
+                for (let i = 0; i < keys.length; i++) {
+                    if (element[keys[i]] === filters[keys[i]]) {
+                        return element;
+                    }
+                }
+                return element;
+            });
+        } else {
+            result = this.peoples
+        }
+        return result;
     }
 }
